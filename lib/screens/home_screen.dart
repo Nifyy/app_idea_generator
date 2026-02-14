@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import '../widgets/top_section.dart';
+import 'dart:math';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -9,6 +10,27 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+  String currentIdea = '';
+
+  final List<String> ideas = [
+    'A fitness app that gamifies workouts',
+    'A recipe app for college students on a budget',
+    'A meditation app with nature sounds',
+    'A language learning app using AR',
+    'A carpooling app for pet owners',
+    'A plant care reminder app with AI',
+    'A book club matching app',
+    'A habit tracker that plants virtual trees',
+    'A local event discovery app',
+    'A meal prep planner with grocery lists',
+  ];
+
+  void generateIdea() {
+    setState(() {
+      currentIdea = ideas[Random().nextInt(ideas.length)];
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -19,7 +41,7 @@ class _HomeScreenState extends State<HomeScreen> {
             width: 360,
             margin: const EdgeInsets.all(20),
             decoration: BoxDecoration(
-              color: Colors.white.withValues(alpha: 0.95),
+              color: Colors.white,
               borderRadius: BorderRadius.circular(30),
             ),
             child: Column(
@@ -32,38 +54,64 @@ class _HomeScreenState extends State<HomeScreen> {
                 const Text(
                   'Generate Idea',
                   style: TextStyle(
-                    fontSize: 18,
-                    fontWeight: FontWeight.w500,
+                    fontSize: 20,
+                    fontWeight: FontWeight.bold,
                     color: Color(0xFF333333),
-                    letterSpacing: 0.5,
                   ),
                 ),
                 
-                const SizedBox(height: 40),
+                const SizedBox(height: 20),
                 
                 Container(
-                  height: 50,
-                  margin: const EdgeInsets.symmetric(horizontal: 40),
+                  height: 120,
+                  margin: const EdgeInsets.symmetric(horizontal: 30),
+                  padding: const EdgeInsets.all(20),
                   decoration: BoxDecoration(
-                    color: Colors.grey[300],
-                    borderRadius: BorderRadius.circular(10),
+                    color: const Color(0xFFF5F5F5),
+                    borderRadius: BorderRadius.circular(15),
+                    border: Border.all(
+                      color: const Color(0xFFE0E0E0),
+                      width: 2,
+                    ),
                   ),
-                  child: const Center(
-                    child: Text('Generate Idea Here'),
+                  child: Center(
+                    child: Text(
+                      currentIdea.isEmpty
+                          ? 'Press the button below\nto generate an app idea!'
+                          : currentIdea,
+                      textAlign: TextAlign.center,
+                      style: TextStyle(
+                        fontSize: 16,
+                        color: currentIdea.isEmpty
+                            ? Colors.grey[600]
+                            : const Color(0xFF333333),
+                        fontWeight: FontWeight.w500,
+                      ),
+                    ),
                   ),
                 ),
                 
-                const SizedBox(height: 30),
+                const SizedBox(height: 25),
                 
-                Container(
-                  height: 60,
-                  margin: const EdgeInsets.symmetric(horizontal: 40),
-                  decoration: BoxDecoration(
-                    color: Colors.grey[200],
-                    borderRadius: BorderRadius.circular(10),
-                  ),
-                  child: const Center(
-                    child: Text('Saved Ideas'),
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 40),
+                  child: TextButton(
+                    onPressed: generateIdea,
+                    style: TextButton.styleFrom(
+                      backgroundColor: const Color(0xFF2D3A31),
+                      minimumSize: const Size(double.infinity, 55),
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(12),
+                      ),
+                    ),
+                    child: const Text(
+                      'Generate Idea',
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 17,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
                   ),
                 ),
                 

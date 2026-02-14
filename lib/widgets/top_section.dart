@@ -25,11 +25,10 @@ class TopSection extends StatelessWidget {
               height: 150,
               decoration: BoxDecoration(
                 shape: BoxShape.circle,
-                color: Colors.white.withValues(alpha: 0.15),
+                color: Colors.white.withOpacity(0.15),
               ),
             ),
           ),
-          
 // Medium circle - top right
           Positioned(
             right: -30,
@@ -39,11 +38,10 @@ class TopSection extends StatelessWidget {
               height: 100,
               decoration: BoxDecoration(
                 shape: BoxShape.circle,
-                color: Colors.white.withValues(alpha: 0.12),
+                color: Colors.white.withOpacity(0.12),
               ),
             ),
           ),
-          
 // Small circle - center
           Positioned(
             left: 80,
@@ -53,11 +51,10 @@ class TopSection extends StatelessWidget {
               height: 60,
               decoration: BoxDecoration(
                 shape: BoxShape.circle,
-                color: Colors.white.withValues(alpha: 0.2),
+                color: Colors.white.withOpacity(0.2),
               ),
             ),
           ),
-          
 // Small circle - right side
           Positioned(
             right: 60,
@@ -67,7 +64,7 @@ class TopSection extends StatelessWidget {
               height: 50,
               decoration: BoxDecoration(
                 shape: BoxShape.circle,
-                color: Colors.white.withValues(alpha: 0.18),
+                color: Colors.white.withOpacity(0.18),
               ),
             ),
           ),
